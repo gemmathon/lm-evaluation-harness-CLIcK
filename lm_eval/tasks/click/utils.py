@@ -24,23 +24,17 @@ def doc_to_text(doc: dict) -> str:
     for i, choice in enumerate(choices):
         text += f"""{chr(65 + i)}. {choice}\n"""
     text += "정답: "
-    print(text)
     return text
 
 
 def doc_to_target(doc: dict) -> str:
-    try:
-        idx = doc["choices"].index(doc["answer"])
-        print(chr(65 + idx))
-        return chr(65 + idx)
-    except:
-        return chr(64)
+    idx = doc["choices"].index(doc["answer"])
+    return chr(65 + idx)
 
 
 def doc_to_choice(doc: dict) -> list:
     choices = doc.get("choices")
     letters = [chr(65 + i) for i in range(0, len(choices))]
-    print(letters)
     return letters
 
 def macro_f1_score(items):
