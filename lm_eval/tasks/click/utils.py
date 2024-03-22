@@ -28,8 +28,12 @@ def doc_to_text(doc: dict) -> str:
 
 
 def doc_to_target(doc: dict) -> str:
-    idx = doc["choices"].index(doc["answer"])
-    return chr(65 + idx)
+    try:
+        idx = doc["choices"].index(doc["answer"])
+        return chr(65 + idx)
+    except:
+        print("id: ", doc["id"])
+        return chr(64)
 
 
 def doc_to_choice(doc: dict) -> list:
