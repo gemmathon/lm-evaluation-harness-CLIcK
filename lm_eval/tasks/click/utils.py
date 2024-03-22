@@ -29,7 +29,7 @@ def doc_to_text(doc: dict) -> str:
 
 def doc_to_target(doc: dict) -> str:
     try:
-        idx = doc["choices"].index(doc["answer"])
+        idx = list(map(lambda s: s.strip(), doc["choices"])).index(doc["answer"].strip())
         return chr(65 + idx)
     except:
         print("id: ", doc["id"])
